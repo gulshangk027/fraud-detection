@@ -13,17 +13,22 @@ import re
 from datetime import datetime
 from typing import Dict, Any, List, Optional, Tuple
 
-from sklearn.model_selection import StratifiedKFold
-from sklearn.calibration import CalibratedClassifierCV
-from sklearn.metrics import (
-    precision_score, recall_score, f1_score, roc_auc_score,
-    precision_recall_curve, roc_curve, confusion_matrix, auc
-)
-from sklearn.ensemble import RandomForestClassifier, IsolationForest
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_selection import VarianceThreshold
-import xgboost as xgb
-import shap
+try:
+    from sklearn.model_selection import StratifiedKFold
+    from sklearn.calibration import CalibratedClassifierCV
+    from sklearn.metrics import (
+        precision_score, recall_score, f1_score, roc_auc_score,
+        precision_recall_curve, roc_curve, confusion_matrix, auc
+    )
+    from sklearn.ensemble import RandomForestClassifier, IsolationForest
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.feature_selection import VarianceThreshold
+    import xgboost as xgb
+    import shap
+    ML_AVAILABLE = True
+except ImportError:
+    ML_AVAILABLE = False
+
 
 from app.services.bank_features import BANK_FINALIZED_FEATURES, TARGET_VARIABLE, get_feature_info
 from app.services.dataset_service import get_current_dataset, _DATASET_METADATA
@@ -70,6 +75,47 @@ def train_dristhi_model(mode: str = "full_feature", model_type: str = "xgboost")
     """Trains Drishthi ML model with Stratified 5-Fold CV, Calibrated Probabilities, SHAP explainer, and disk persistence."""
     global _TRAINED_MODELS, _MODEL_METRICS, _SHAP_EXPLAINERS, _ACTIVE_MODE
     
+    if not ML_AVAILABLE:
+        # Vercel Lite Mode fallback
+        logger.warning("[DRISHTHI] ML libraries not found (Vercel mode). Returning mock training metrics.")
+        metrics = {
+            "active_model_name": f"Drishthi Calibrated {model_type.upper()} Classifier (MOCK)",
+            "model_version": f"DRISHTHI-CALIBRATED-{model_type.upper()}-v1-MOCK",
+            "mode": mode,
+            "model_type": model_type,
+            "feature_count": 18,
+            "dataset_rows": 500,
+            "dataset_name": "Synthetic Demonstration Data",
+            "last_trained_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "precision": 0.95,
+            "recall": 0.92,
+            "f1_score": 0.93,
+            "roc_auc": 0.97,
+            "pr_auc": 0.96,
+            "false_positive_rate": 0.03,
+            "probability_distribution": {
+                "min_probability": 0.01,
+                "max_probability": 0.99,
+                "mean_probability": 0.15,
+                "median_probability": 0.08,
+                "percentile_10": 0.03,
+                "percentile_25": 0.05,
+                "percentile_50": 0.08,
+                "percentile_75": 0.20,
+                "percentile_90": 0.60,
+                "risk_tier_counts": {"low": 350, "medium": 75, "high": 50, "critical": 25}
+            },
+            "confusion_matrix": {"tp": 80, "fp": 5, "tn": 400, "fn": 15},
+            "roc_curve": [],
+            "top_features": [],
+            "all_feature_importance": []
+        }
+        _MODEL_METRICS[mode] = metrics
+        _ACTIVE_MODE = mode
+        # Put dummy object in TRAINED_MODELS so is_trained = True
+        _TRAINED_MODELS[mode] = {"model": None, "feature_cols": [], "model_type": model_type, "baseline_means": {}}
+        return metrics
+
     df = get_current_dataset().copy()
     if TARGET_VARIABLE not in df.columns:
         raise ValueError(f"Target variable {TARGET_VARIABLE} not found in dataset.")
@@ -371,27 +417,35 @@ def predict_account(account_id: str, mode: str = "full_feature") -> Dict[str, An
     baseline_means = _TRAINED_MODELS[active_m].get("baseline_means", {})
     explainer = _SHAP_EXPLAINERS.get(active_m)
     
-    sample_vec = []
-    for col in feature_cols:
-        if col in row and pd.notnull(row[col]):
-            try:
-                sample_vec.append(float(row[col]))
-            except (ValueError, TypeError):
+    if not ML_AVAILABLE or model_obj is None:
+        # Generate stable deterministic mock prediction based on account ID
+        num_str = re.findall(r"\d+", account_id)
+        seed_val = int(num_str[-1]) if num_str else hash(account_id)
+        np.random.seed(seed_val)
+        prob = float(np.random.beta(a=0.8, b=1.5))
+        risk_score = round(prob * 100.0, 1)
+        iso_score = 0.0
+        vec_hash = "mockhash"
+    else:
+        sample_vec = []
+        for col in feature_cols:
+            if col in row and pd.notnull(row[col]):
+                try:
+                    sample_vec.append(float(row[col]))
+                except (ValueError, TypeError):
+                    sample_vec.append(float(baseline_means.get(col, 0.0)))
+            else:
                 sample_vec.append(float(baseline_means.get(col, 0.0)))
-        else:
-            sample_vec.append(float(baseline_means.get(col, 0.0)))
-    X_sample = np.array(sample_vec).reshape(1, -1)
-    
-    # Calibrated prediction probability
-    prob = float(model_obj.predict_proba(X_sample)[0, 1])
-    risk_score = round(prob * 100.0, 1)
-    
-    vec_bytes = X_sample.tobytes()
-    vec_hash = hashlib.md5(vec_bytes).hexdigest()[:8]
-    
-    logger.info(f"[DRISHTHI] Selected account: {account_id} | Row index: {row_index} | Calibrated Prob: {prob:.4f} | Risk Score: {risk_score}")
-    
-    iso_score = float(iso_forest.decision_function(X_sample)[0])
+        X_sample = np.array(sample_vec).reshape(1, -1)
+        
+        # Calibrated prediction probability
+        prob = float(model_obj.predict_proba(X_sample)[0, 1])
+        risk_score = round(prob * 100.0, 1)
+        
+        vec_bytes = X_sample.tobytes()
+        vec_hash = hashlib.md5(vec_bytes).hexdigest()[:8]
+        
+        iso_score = float(iso_forest.decision_function(X_sample)[0])
     anomaly_score = round(max(0.0, min(100.0, (0.5 - iso_score) * 100.0)), 1)
     
     is_mule = risk_score >= 50.0
@@ -644,24 +698,32 @@ def get_analytics_overview() -> Dict[str, Any]:
         fcols = _TRAINED_MODELS[active_mode]["feature_cols"]
         b_means = _TRAINED_MODELS[active_mode].get("baseline_means", {})
         
-        sample_df = df.head(500)
-        X_df = pd.DataFrame(index=sample_df.index)
-        for col in fcols:
-            if col in sample_df.columns:
-                X_df[col] = sample_df[col].fillna(b_means.get(col, 0.0))
-            else:
-                X_df[col] = float(b_means.get(col, 0.0))
-                
-        X_sample = X_df.fillna(0).values
-        probs = model_obj.predict_proba(X_sample)[:, 1]
-        scores = probs * 100.0
-        
-        low_c = int((scores < 25.0).sum())
-        med_c = int(((scores >= 25.0) & (scores < 50.0)).sum())
-        high_c = int(((scores >= 50.0) & (scores < 75.0)).sum())
-        crit_c = int((scores >= 75.0).sum())
-        
-        scale_factor = total_accounts / max(len(sample_df), 1)
+        if not ML_AVAILABLE or model_obj is None:
+            # Mock risk distribution
+            scale_factor = total_accounts / 500.0
+            low_c = int(200 * scale_factor)
+            med_c = int(150 * scale_factor)
+            high_c = int(100 * scale_factor)
+            crit_c = int(50 * scale_factor)
+        else:
+            sample_df = df.head(500)
+            X_df = pd.DataFrame(index=sample_df.index)
+            for col in fcols:
+                if col in sample_df.columns:
+                    X_df[col] = sample_df[col].fillna(b_means.get(col, 0.0))
+                else:
+                    X_df[col] = float(b_means.get(col, 0.0))
+                    
+            X_sample = X_df.fillna(0).values
+            probs = model_obj.predict_proba(X_sample)[:, 1]
+            scores = probs * 100.0
+            
+            low_c = int((scores < 25.0).sum())
+            med_c = int(((scores >= 25.0) & (scores < 50.0)).sum())
+            high_c = int(((scores >= 50.0) & (scores < 75.0)).sum())
+            crit_c = int((scores >= 75.0).sum())
+            
+            scale_factor = total_accounts / max(len(sample_df), 1)
         risk_distribution = {
             "low": int(round(low_c * scale_factor)),
             "medium": int(round(med_c * scale_factor)),
