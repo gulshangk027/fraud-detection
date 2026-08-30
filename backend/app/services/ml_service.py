@@ -119,7 +119,7 @@ def train_dristhi_model(mode: str = "full_feature", model_type: str = "xgboost")
         _MODEL_METRICS[mode] = metrics
         _ACTIVE_MODE = mode
         # Put dummy object in TRAINED_MODELS so is_trained = True
-        _TRAINED_MODELS[mode] = {"model": None, "feature_cols": [], "model_type": model_type, "baseline_means": {}}
+        _TRAINED_MODELS[mode] = {"model": None, "iso_forest": None, "feature_cols": [], "model_type": model_type, "baseline_means": {}}
         return metrics
 
     df = get_current_dataset().copy()
@@ -422,6 +422,7 @@ def predict_account(account_id: str, mode: str = "full_feature") -> Dict[str, An
     feature_cols = _TRAINED_MODELS[active_m]["feature_cols"]
     baseline_means = _TRAINED_MODELS[active_m].get("baseline_means", {})
     explainer = _SHAP_EXPLAINERS.get(active_m)
+    X_sample = None
     
     if not ML_AVAILABLE or model_obj is None:
         # Generate stable deterministic mock prediction based on account ID
@@ -472,7 +473,7 @@ def predict_account(account_id: str, mode: str = "full_feature") -> Dict[str, An
     shap_contributions = []
     explanation_text = ""
     
-    if explainer is not None:
+    if explainer is not None and X_sample is not None:
         try:
             shap_vals = explainer.shap_values(X_sample)
             if isinstance(shap_vals, list):
