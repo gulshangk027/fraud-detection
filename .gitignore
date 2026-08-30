@@ -1,0 +1,8 @@
+backend/venv/
+backend/__pycache__/
+*.pyc
+*.zip
+___All_Errors.txt
+__frontend/
+frontend/node_modules/
+.env

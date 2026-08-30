@@ -1,0 +1,1058 @@
+{
+  "full_feature": {
+    "active_model_name": "Drishthi Calibrated XGBOOST Classifier",
+    "model_version": "DRISHTHI-CALIBRATED-XGBOOST-v1",
+    "mode": "full_feature",
+    "model_type": "xgboost",
+    "feature_count": 118,
+    "dataset_rows": 500,
+    "dataset_name": "Synthetic Demonstration Data",
+    "last_trained_at": "2026-08-30 23:35:28",
+    "precision": 0.6705,
+    "recall": 0.5175,
+    "f1_score": 0.5842,
+    "roc_auc": 0.8156,
+    "pr_auc": 0.5777,
+    "false_positive_rate": 0.0751,
+    "probability_distribution": {
+      "min_probability": 0.0753,
+      "max_probability": 0.7554,
+      "mean_probability": 0.2377,
+      "median_probability": 0.0953,
+      "percentile_10": 0.0788,
+      "percentile_25": 0.0822,
+      "percentile_50": 0.0953,
+      "percentile_75": 0.3114,
+      "percentile_90": 0.7054,
+      "risk_tier_counts": {
+        "low": 364,
+        "medium": 23,
+        "high": 112,
+        "critical": 1
+      }
+    },
+    "confusion_matrix": {
+      "tp": 59,
+      "fp": 29,
+      "tn": 357,
+      "fn": 55
+    },
+    "roc_curve": [
+      {
+        "fpr": 0.0,
+        "tpr": 0.0
+      },
+      {
+        "fpr": 0.008,
+        "tpr": 0.044
+      },
+      {
+        "fpr": 0.021,
+        "tpr": 0.114
+      },
+      {
+        "fpr": 0.028,
+        "tpr": 0.211
+      },
+      {
+        "fpr": 0.044,
+        "tpr": 0.325
+      },
+      {
+        "fpr": 0.052,
+        "tpr": 0.395
+      },
+      {
+        "fpr": 0.067,
+        "tpr": 0.518
+      },
+      {
+        "fpr": 0.098,
+        "tpr": 0.57
+      },
+      {
+        "fpr": 0.111,
+        "tpr": 0.632
+      },
+      {
+        "fpr": 0.145,
+        "tpr": 0.658
+      },
+      {
+        "fpr": 0.199,
+        "tpr": 0.693
+      },
+      {
+        "fpr": 0.249,
+        "tpr": 0.746
+      },
+      {
+        "fpr": 0.298,
+        "tpr": 0.772
+      },
+      {
+        "fpr": 0.313,
+        "tpr": 0.816
+      },
+      {
+        "fpr": 0.425,
+        "tpr": 0.842
+      },
+      {
+        "fpr": 0.505,
+        "tpr": 0.868
+      },
+      {
+        "fpr": 0.58,
+        "tpr": 0.912
+      },
+      {
+        "fpr": 0.728,
+        "tpr": 0.939
+      },
+      {
+        "fpr": 0.826,
+        "tpr": 0.974
+      },
+      {
+        "fpr": 1.0,
+        "tpr": 1.0
+      }
+    ],
+    "top_features": [
+      {
+        "feature_id": "F2582",
+        "variable_name": "DA_UPI_TXN_CR_L7_14D",
+        "description": "Deviation of avgs: of UPI Total Amount - last 7 to 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0593
+      },
+      {
+        "feature_id": "F2082",
+        "variable_name": "AVG_NET_BNKING_TXNS_DB_L14D",
+        "description": "Average Net Banking Debit Txns - last 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0499
+      },
+      {
+        "feature_id": "F115",
+        "variable_name": "R_CI_NON_CASH_CHQ_TXN_L14_31D",
+        "description": "Ratio of Customer Induced Non Cash Non Cheque Total txns - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0495
+      },
+      {
+        "feature_id": "F3836",
+        "variable_name": "AVG_BAL_14DAYS",
+        "description": "Average account balance in last 14 days",
+        "is_bank_finalized": true,
+        "importance": 0.0373
+      },
+      {
+        "feature_id": "F2956",
+        "variable_name": "D_TA_CI_NON_CASH_CHQ_TXN_CR_L14D",
+        "description": "Deviation of total from avg: Customer Induced Non Cash Non Cheque Credit txns - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0325
+      },
+      {
+        "feature_id": "F2737",
+        "variable_name": "DA_NON_CASH_CHQ_AMT_L7_31D",
+        "description": "Deviation of avgs: of Non Cash Non Cheque Total Amount - last 7 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0183
+      },
+      {
+        "feature_id": "F10",
+        "variable_name": "Credit-to-Debit Imbalance",
+        "description": "Ratio of immediate debit drain vs total credit inflow",
+        "is_bank_finalized": false,
+        "importance": 0.0119
+      },
+      {
+        "feature_id": "F2678",
+        "variable_name": "DA_ELEC_XFER_AMT_L14_31D",
+        "description": "Deviation of avgs: of Online Transfer (IMPS+NEFT+RTGS) Total Amount - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0118
+      },
+      {
+        "feature_id": "F3889",
+        "variable_name": "ACCT_OPN_DAYS",
+        "description": "Number of days since account opened (buckets)",
+        "is_bank_finalized": true,
+        "importance": 0.0117
+      },
+      {
+        "feature_id": "F31",
+        "variable_name": "Engineered Behavioral Signal F31",
+        "description": "Engineered Behavioral Signal F31",
+        "is_bank_finalized": false,
+        "importance": 0.0114
+      },
+      {
+        "feature_id": "F3887",
+        "variable_name": "TENURE_AS_OF_ALERT",
+        "description": "Customer tenure with the bank as of the alert date",
+        "is_bank_finalized": true,
+        "importance": 0.0112
+      },
+      {
+        "feature_id": "F5",
+        "variable_name": "New Beneficiary Count",
+        "description": "Newly added transfer beneficiaries within 24 hours",
+        "is_bank_finalized": false,
+        "importance": 0.0108
+      },
+      {
+        "feature_id": "F82",
+        "variable_name": "Engineered Behavioral Signal F82",
+        "description": "Engineered Behavioral Signal F82",
+        "is_bank_finalized": false,
+        "importance": 0.0107
+      },
+      {
+        "feature_id": "F72",
+        "variable_name": "Engineered Behavioral Signal F72",
+        "description": "Engineered Behavioral Signal F72",
+        "is_bank_finalized": false,
+        "importance": 0.0105
+      },
+      {
+        "feature_id": "F12",
+        "variable_name": "Branch Cash Inflow Ratio",
+        "description": "Ratio of branch cash deposits vs digital transfers",
+        "is_bank_finalized": false,
+        "importance": 0.0104
+      }
+    ],
+    "all_feature_importance": [
+      {
+        "feature_id": "F2582",
+        "variable_name": "DA_UPI_TXN_CR_L7_14D",
+        "description": "Deviation of avgs: of UPI Total Amount - last 7 to 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0593
+      },
+      {
+        "feature_id": "F2082",
+        "variable_name": "AVG_NET_BNKING_TXNS_DB_L14D",
+        "description": "Average Net Banking Debit Txns - last 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0499
+      },
+      {
+        "feature_id": "F115",
+        "variable_name": "R_CI_NON_CASH_CHQ_TXN_L14_31D",
+        "description": "Ratio of Customer Induced Non Cash Non Cheque Total txns - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0495
+      },
+      {
+        "feature_id": "F3836",
+        "variable_name": "AVG_BAL_14DAYS",
+        "description": "Average account balance in last 14 days",
+        "is_bank_finalized": true,
+        "importance": 0.0373
+      },
+      {
+        "feature_id": "F2956",
+        "variable_name": "D_TA_CI_NON_CASH_CHQ_TXN_CR_L14D",
+        "description": "Deviation of total from avg: Customer Induced Non Cash Non Cheque Credit txns - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0325
+      },
+      {
+        "feature_id": "F2737",
+        "variable_name": "DA_NON_CASH_CHQ_AMT_L7_31D",
+        "description": "Deviation of avgs: of Non Cash Non Cheque Total Amount - last 7 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0183
+      },
+      {
+        "feature_id": "F10",
+        "variable_name": "Credit-to-Debit Imbalance",
+        "description": "Ratio of immediate debit drain vs total credit inflow",
+        "is_bank_finalized": false,
+        "importance": 0.0119
+      },
+      {
+        "feature_id": "F2678",
+        "variable_name": "DA_ELEC_XFER_AMT_L14_31D",
+        "description": "Deviation of avgs: of Online Transfer (IMPS+NEFT+RTGS) Total Amount - last 14 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0118
+      },
+      {
+        "feature_id": "F3889",
+        "variable_name": "ACCT_OPN_DAYS",
+        "description": "Number of days since account opened (buckets)",
+        "is_bank_finalized": true,
+        "importance": 0.0117
+      },
+      {
+        "feature_id": "F31",
+        "variable_name": "Engineered Behavioral Signal F31",
+        "description": "Engineered Behavioral Signal F31",
+        "is_bank_finalized": false,
+        "importance": 0.0114
+      },
+      {
+        "feature_id": "F3887",
+        "variable_name": "TENURE_AS_OF_ALERT",
+        "description": "Customer tenure with the bank as of the alert date",
+        "is_bank_finalized": true,
+        "importance": 0.0112
+      },
+      {
+        "feature_id": "F5",
+        "variable_name": "New Beneficiary Count",
+        "description": "Newly added transfer beneficiaries within 24 hours",
+        "is_bank_finalized": false,
+        "importance": 0.0108
+      },
+      {
+        "feature_id": "F82",
+        "variable_name": "Engineered Behavioral Signal F82",
+        "description": "Engineered Behavioral Signal F82",
+        "is_bank_finalized": false,
+        "importance": 0.0107
+      },
+      {
+        "feature_id": "F72",
+        "variable_name": "Engineered Behavioral Signal F72",
+        "description": "Engineered Behavioral Signal F72",
+        "is_bank_finalized": false,
+        "importance": 0.0105
+      },
+      {
+        "feature_id": "F12",
+        "variable_name": "Branch Cash Inflow Ratio",
+        "description": "Ratio of branch cash deposits vs digital transfers",
+        "is_bank_finalized": false,
+        "importance": 0.0104
+      },
+      {
+        "feature_id": "F42",
+        "variable_name": "Engineered Behavioral Signal F42",
+        "description": "Engineered Behavioral Signal F42",
+        "is_bank_finalized": false,
+        "importance": 0.0104
+      },
+      {
+        "feature_id": "F91",
+        "variable_name": "Engineered Behavioral Signal F91",
+        "description": "Engineered Behavioral Signal F91",
+        "is_bank_finalized": false,
+        "importance": 0.0104
+      },
+      {
+        "feature_id": "F15",
+        "variable_name": "Micro-Deposit Inflow Ratio",
+        "description": "Proportion of incoming micro-amount test transfers",
+        "is_bank_finalized": false,
+        "importance": 0.0103
+      },
+      {
+        "feature_id": "F97",
+        "variable_name": "Engineered Behavioral Signal F97",
+        "description": "Engineered Behavioral Signal F97",
+        "is_bank_finalized": false,
+        "importance": 0.01
+      },
+      {
+        "feature_id": "F99",
+        "variable_name": "Engineered Behavioral Signal F99",
+        "description": "Engineered Behavioral Signal F99",
+        "is_bank_finalized": false,
+        "importance": 0.01
+      },
+      {
+        "feature_id": "F670",
+        "variable_name": "MIN_UPI_XFER_TXNS_L7D",
+        "description": "Min UPI Total Txns - last 7D",
+        "is_bank_finalized": true,
+        "importance": 0.0099
+      },
+      {
+        "feature_id": "F75",
+        "variable_name": "Engineered Behavioral Signal F75",
+        "description": "Engineered Behavioral Signal F75",
+        "is_bank_finalized": false,
+        "importance": 0.0099
+      },
+      {
+        "feature_id": "F1692",
+        "variable_name": "CASH_TXNS_DB_L14D",
+        "description": "Cash Debit Txns - last 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0098
+      },
+      {
+        "feature_id": "F36",
+        "variable_name": "Engineered Behavioral Signal F36",
+        "description": "Engineered Behavioral Signal F36",
+        "is_bank_finalized": false,
+        "importance": 0.0097
+      },
+      {
+        "feature_id": "F57",
+        "variable_name": "Engineered Behavioral Signal F57",
+        "description": "Engineered Behavioral Signal F57",
+        "is_bank_finalized": false,
+        "importance": 0.0094
+      },
+      {
+        "feature_id": "F69",
+        "variable_name": "Engineered Behavioral Signal F69",
+        "description": "Engineered Behavioral Signal F69",
+        "is_bank_finalized": false,
+        "importance": 0.0094
+      },
+      {
+        "feature_id": "F14",
+        "variable_name": "Beneficiary Addition Count",
+        "description": "Frequency of newly added transfer payees",
+        "is_bank_finalized": false,
+        "importance": 0.0092
+      },
+      {
+        "feature_id": "F61",
+        "variable_name": "Engineered Behavioral Signal F61",
+        "description": "Engineered Behavioral Signal F61",
+        "is_bank_finalized": false,
+        "importance": 0.0089
+      },
+      {
+        "feature_id": "F28",
+        "variable_name": "Engineered Behavioral Signal F28",
+        "description": "Engineered Behavioral Signal F28",
+        "is_bank_finalized": false,
+        "importance": 0.0084
+      },
+      {
+        "feature_id": "F86",
+        "variable_name": "Engineered Behavioral Signal F86",
+        "description": "Engineered Behavioral Signal F86",
+        "is_bank_finalized": false,
+        "importance": 0.0083
+      },
+      {
+        "feature_id": "F56",
+        "variable_name": "Engineered Behavioral Signal F56",
+        "description": "Engineered Behavioral Signal F56",
+        "is_bank_finalized": false,
+        "importance": 0.0082
+      },
+      {
+        "feature_id": "F527",
+        "variable_name": "RA_CI_NON_CASH_CHQ_TXN_CR_L7_31D",
+        "description": "Ratio of avgs: of Customer Induced Non Cash Non Cheque Credit txns - last 7 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0081
+      },
+      {
+        "feature_id": "F68",
+        "variable_name": "Engineered Behavioral Signal F68",
+        "description": "Engineered Behavioral Signal F68",
+        "is_bank_finalized": false,
+        "importance": 0.0081
+      },
+      {
+        "feature_id": "F19",
+        "variable_name": "Cheque Clearance Velocity",
+        "description": "High-value cheque deposit and rapid clearing",
+        "is_bank_finalized": false,
+        "importance": 0.008
+      },
+      {
+        "feature_id": "F59",
+        "variable_name": "Engineered Behavioral Signal F59",
+        "description": "Engineered Behavioral Signal F59",
+        "is_bank_finalized": false,
+        "importance": 0.008
+      },
+      {
+        "feature_id": "F37",
+        "variable_name": "Engineered Behavioral Signal F37",
+        "description": "Engineered Behavioral Signal F37",
+        "is_bank_finalized": false,
+        "importance": 0.0078
+      },
+      {
+        "feature_id": "F87",
+        "variable_name": "Engineered Behavioral Signal F87",
+        "description": "Engineered Behavioral Signal F87",
+        "is_bank_finalized": false,
+        "importance": 0.0078
+      },
+      {
+        "feature_id": "F39",
+        "variable_name": "Engineered Behavioral Signal F39",
+        "description": "Engineered Behavioral Signal F39",
+        "is_bank_finalized": false,
+        "importance": 0.0077
+      },
+      {
+        "feature_id": "F32",
+        "variable_name": "Engineered Behavioral Signal F32",
+        "description": "Engineered Behavioral Signal F32",
+        "is_bank_finalized": false,
+        "importance": 0.0076
+      },
+      {
+        "feature_id": "F67",
+        "variable_name": "Engineered Behavioral Signal F67",
+        "description": "Engineered Behavioral Signal F67",
+        "is_bank_finalized": false,
+        "importance": 0.0076
+      },
+      {
+        "feature_id": "F100",
+        "variable_name": "Engineered Behavioral Signal F100",
+        "description": "Engineered Behavioral Signal F100",
+        "is_bank_finalized": false,
+        "importance": 0.0075
+      },
+      {
+        "feature_id": "F3",
+        "variable_name": "Unique Senders",
+        "description": "Number of distinct incoming money senders (7D)",
+        "is_bank_finalized": false,
+        "importance": 0.0075
+      },
+      {
+        "feature_id": "F62",
+        "variable_name": "Engineered Behavioral Signal F62",
+        "description": "Engineered Behavioral Signal F62",
+        "is_bank_finalized": false,
+        "importance": 0.0075
+      },
+      {
+        "feature_id": "F33",
+        "variable_name": "Engineered Behavioral Signal F33",
+        "description": "Engineered Behavioral Signal F33",
+        "is_bank_finalized": false,
+        "importance": 0.0074
+      },
+      {
+        "feature_id": "F90",
+        "variable_name": "Engineered Behavioral Signal F90",
+        "description": "Engineered Behavioral Signal F90",
+        "is_bank_finalized": false,
+        "importance": 0.0074
+      },
+      {
+        "feature_id": "F24",
+        "variable_name": "Engineered Behavioral Signal F24",
+        "description": "Engineered Behavioral Signal F24",
+        "is_bank_finalized": false,
+        "importance": 0.0073
+      },
+      {
+        "feature_id": "F55",
+        "variable_name": "Engineered Behavioral Signal F55",
+        "description": "Engineered Behavioral Signal F55",
+        "is_bank_finalized": false,
+        "importance": 0.0073
+      },
+      {
+        "feature_id": "F79",
+        "variable_name": "Engineered Behavioral Signal F79",
+        "description": "Engineered Behavioral Signal F79",
+        "is_bank_finalized": false,
+        "importance": 0.0073
+      },
+      {
+        "feature_id": "F13",
+        "variable_name": "ATM Cash Withdrawal Velocity",
+        "description": "ATM cash withdrawal velocity following credit burst",
+        "is_bank_finalized": false,
+        "importance": 0.0072
+      },
+      {
+        "feature_id": "F60",
+        "variable_name": "Engineered Behavioral Signal F60",
+        "description": "Engineered Behavioral Signal F60",
+        "is_bank_finalized": false,
+        "importance": 0.0071
+      },
+      {
+        "feature_id": "F78",
+        "variable_name": "Engineered Behavioral Signal F78",
+        "description": "Engineered Behavioral Signal F78",
+        "is_bank_finalized": false,
+        "importance": 0.0071
+      },
+      {
+        "feature_id": "F84",
+        "variable_name": "Engineered Behavioral Signal F84",
+        "description": "Engineered Behavioral Signal F84",
+        "is_bank_finalized": false,
+        "importance": 0.0071
+      },
+      {
+        "feature_id": "F26",
+        "variable_name": "Engineered Behavioral Signal F26",
+        "description": "Engineered Behavioral Signal F26",
+        "is_bank_finalized": false,
+        "importance": 0.0069
+      },
+      {
+        "feature_id": "F29",
+        "variable_name": "Engineered Behavioral Signal F29",
+        "description": "Engineered Behavioral Signal F29",
+        "is_bank_finalized": false,
+        "importance": 0.0069
+      },
+      {
+        "feature_id": "F41",
+        "variable_name": "Engineered Behavioral Signal F41",
+        "description": "Engineered Behavioral Signal F41",
+        "is_bank_finalized": false,
+        "importance": 0.0069
+      },
+      {
+        "feature_id": "F76",
+        "variable_name": "Engineered Behavioral Signal F76",
+        "description": "Engineered Behavioral Signal F76",
+        "is_bank_finalized": false,
+        "importance": 0.0069
+      },
+      {
+        "feature_id": "F22",
+        "variable_name": "Engineered Behavioral Signal F22",
+        "description": "Engineered Behavioral Signal F22",
+        "is_bank_finalized": false,
+        "importance": 0.0068
+      },
+      {
+        "feature_id": "F47",
+        "variable_name": "Engineered Behavioral Signal F47",
+        "description": "Engineered Behavioral Signal F47",
+        "is_bank_finalized": false,
+        "importance": 0.0068
+      },
+      {
+        "feature_id": "F64",
+        "variable_name": "Engineered Behavioral Signal F64",
+        "description": "Engineered Behavioral Signal F64",
+        "is_bank_finalized": false,
+        "importance": 0.0068
+      },
+      {
+        "feature_id": "F88",
+        "variable_name": "Engineered Behavioral Signal F88",
+        "description": "Engineered Behavioral Signal F88",
+        "is_bank_finalized": false,
+        "importance": 0.0068
+      },
+      {
+        "feature_id": "F44",
+        "variable_name": "Engineered Behavioral Signal F44",
+        "description": "Engineered Behavioral Signal F44",
+        "is_bank_finalized": false,
+        "importance": 0.0067
+      },
+      {
+        "feature_id": "F53",
+        "variable_name": "Engineered Behavioral Signal F53",
+        "description": "Engineered Behavioral Signal F53",
+        "is_bank_finalized": false,
+        "importance": 0.0066
+      },
+      {
+        "feature_id": "F74",
+        "variable_name": "Engineered Behavioral Signal F74",
+        "description": "Engineered Behavioral Signal F74",
+        "is_bank_finalized": false,
+        "importance": 0.0066
+      },
+      {
+        "feature_id": "F35",
+        "variable_name": "Engineered Behavioral Signal F35",
+        "description": "Engineered Behavioral Signal F35",
+        "is_bank_finalized": false,
+        "importance": 0.0065
+      },
+      {
+        "feature_id": "F38",
+        "variable_name": "Engineered Behavioral Signal F38",
+        "description": "Engineered Behavioral Signal F38",
+        "is_bank_finalized": false,
+        "importance": 0.0065
+      },
+      {
+        "feature_id": "F49",
+        "variable_name": "Engineered Behavioral Signal F49",
+        "description": "Engineered Behavioral Signal F49",
+        "is_bank_finalized": false,
+        "importance": 0.0065
+      },
+      {
+        "feature_id": "F93",
+        "variable_name": "Engineered Behavioral Signal F93",
+        "description": "Engineered Behavioral Signal F93",
+        "is_bank_finalized": false,
+        "importance": 0.0065
+      },
+      {
+        "feature_id": "F2",
+        "variable_name": "Rapid Transfer Count",
+        "description": "High-frequency outbound electronic transfers",
+        "is_bank_finalized": false,
+        "importance": 0.0064
+      },
+      {
+        "feature_id": "F23",
+        "variable_name": "Engineered Behavioral Signal F23",
+        "description": "Engineered Behavioral Signal F23",
+        "is_bank_finalized": false,
+        "importance": 0.0063
+      },
+      {
+        "feature_id": "F48",
+        "variable_name": "Engineered Behavioral Signal F48",
+        "description": "Engineered Behavioral Signal F48",
+        "is_bank_finalized": false,
+        "importance": 0.0063
+      },
+      {
+        "feature_id": "F80",
+        "variable_name": "Engineered Behavioral Signal F80",
+        "description": "Engineered Behavioral Signal F80",
+        "is_bank_finalized": false,
+        "importance": 0.0063
+      },
+      {
+        "feature_id": "F2122",
+        "variable_name": "AVG_CASH_TXNS_L31D",
+        "description": "Average Cash Transaction Count - last 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0061
+      },
+      {
+        "feature_id": "F7",
+        "variable_name": "Device Changes",
+        "description": "Number of distinct mobile devices/IMEIs linked to account",
+        "is_bank_finalized": false,
+        "importance": 0.0061
+      },
+      {
+        "feature_id": "F81",
+        "variable_name": "Engineered Behavioral Signal F81",
+        "description": "Engineered Behavioral Signal F81",
+        "is_bank_finalized": false,
+        "importance": 0.0059
+      },
+      {
+        "feature_id": "F11",
+        "variable_name": "IMPS Transfer Velocity",
+        "description": "Outbound IMPS high-speed transfer frequency",
+        "is_bank_finalized": false,
+        "importance": 0.0058
+      },
+      {
+        "feature_id": "F321",
+        "variable_name": "RA_NON_CASH_CHQ_AMT_L7_14D",
+        "description": "Ratio of avgs: of Non Cash Non Cheque Total Amount - last 7 to 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0058
+      },
+      {
+        "feature_id": "F3894",
+        "variable_name": "AGE_IN_YRS",
+        "description": "Customer age as of alert date",
+        "is_bank_finalized": true,
+        "importance": 0.0058
+      },
+      {
+        "feature_id": "F54",
+        "variable_name": "Engineered Behavioral Signal F54",
+        "description": "Engineered Behavioral Signal F54",
+        "is_bank_finalized": false,
+        "importance": 0.0057
+      },
+      {
+        "feature_id": "F94",
+        "variable_name": "Engineered Behavioral Signal F94",
+        "description": "Engineered Behavioral Signal F94",
+        "is_bank_finalized": false,
+        "importance": 0.0057
+      },
+      {
+        "feature_id": "F30",
+        "variable_name": "Engineered Behavioral Signal F30",
+        "description": "Engineered Behavioral Signal F30",
+        "is_bank_finalized": false,
+        "importance": 0.0056
+      },
+      {
+        "feature_id": "F73",
+        "variable_name": "Engineered Behavioral Signal F73",
+        "description": "Engineered Behavioral Signal F73",
+        "is_bank_finalized": false,
+        "importance": 0.0056
+      },
+      {
+        "feature_id": "F27",
+        "variable_name": "Engineered Behavioral Signal F27",
+        "description": "Engineered Behavioral Signal F27",
+        "is_bank_finalized": false,
+        "importance": 0.0055
+      },
+      {
+        "feature_id": "F17",
+        "variable_name": "Mobile Session Velocity",
+        "description": "Rapid mobile app session initiations",
+        "is_bank_finalized": false,
+        "importance": 0.0054
+      },
+      {
+        "feature_id": "F25",
+        "variable_name": "Engineered Behavioral Signal F25",
+        "description": "Engineered Behavioral Signal F25",
+        "is_bank_finalized": false,
+        "importance": 0.0054
+      },
+      {
+        "feature_id": "F34",
+        "variable_name": "Engineered Behavioral Signal F34",
+        "description": "Engineered Behavioral Signal F34",
+        "is_bank_finalized": false,
+        "importance": 0.0054
+      },
+      {
+        "feature_id": "F50",
+        "variable_name": "Engineered Behavioral Signal F50",
+        "description": "Engineered Behavioral Signal F50",
+        "is_bank_finalized": false,
+        "importance": 0.0054
+      },
+      {
+        "feature_id": "F51",
+        "variable_name": "Engineered Behavioral Signal F51",
+        "description": "Engineered Behavioral Signal F51",
+        "is_bank_finalized": false,
+        "importance": 0.0054
+      },
+      {
+        "feature_id": "F21",
+        "variable_name": "Engineered Behavioral Signal F21",
+        "description": "Engineered Behavioral Signal F21",
+        "is_bank_finalized": false,
+        "importance": 0.0053
+      },
+      {
+        "feature_id": "F45",
+        "variable_name": "Engineered Behavioral Signal F45",
+        "description": "Engineered Behavioral Signal F45",
+        "is_bank_finalized": false,
+        "importance": 0.0053
+      },
+      {
+        "feature_id": "F46",
+        "variable_name": "Engineered Behavioral Signal F46",
+        "description": "Engineered Behavioral Signal F46",
+        "is_bank_finalized": false,
+        "importance": 0.0053
+      },
+      {
+        "feature_id": "F3043",
+        "variable_name": "D_TA_CASH_TXN_L31D",
+        "description": "Deviation of total from avg: Cash Total txns - last 7 to 14D",
+        "is_bank_finalized": true,
+        "importance": 0.0051
+      },
+      {
+        "feature_id": "F16",
+        "variable_name": "Location Variance Index",
+        "description": "Discrepancy in geographical login coordinates",
+        "is_bank_finalized": false,
+        "importance": 0.005
+      },
+      {
+        "feature_id": "F58",
+        "variable_name": "Engineered Behavioral Signal F58",
+        "description": "Engineered Behavioral Signal F58",
+        "is_bank_finalized": false,
+        "importance": 0.005
+      },
+      {
+        "feature_id": "F20",
+        "variable_name": "High-Value Debit Drain Ratio",
+        "description": "Percentage of account balance drained within 1 hour",
+        "is_bank_finalized": false,
+        "importance": 0.0049
+      },
+      {
+        "feature_id": "F85",
+        "variable_name": "Engineered Behavioral Signal F85",
+        "description": "Engineered Behavioral Signal F85",
+        "is_bank_finalized": false,
+        "importance": 0.0048
+      },
+      {
+        "feature_id": "F52",
+        "variable_name": "Engineered Behavioral Signal F52",
+        "description": "Engineered Behavioral Signal F52",
+        "is_bank_finalized": false,
+        "importance": 0.0047
+      },
+      {
+        "feature_id": "F71",
+        "variable_name": "Engineered Behavioral Signal F71",
+        "description": "Engineered Behavioral Signal F71",
+        "is_bank_finalized": false,
+        "importance": 0.0047
+      },
+      {
+        "feature_id": "F9",
+        "variable_name": "Cash Withdrawal Activity",
+        "description": "ATM & Branch cash withdrawal velocity after credit",
+        "is_bank_finalized": false,
+        "importance": 0.0047
+      },
+      {
+        "feature_id": "F92",
+        "variable_name": "Engineered Behavioral Signal F92",
+        "description": "Engineered Behavioral Signal F92",
+        "is_bank_finalized": false,
+        "importance": 0.0047
+      },
+      {
+        "feature_id": "F89",
+        "variable_name": "Engineered Behavioral Signal F89",
+        "description": "Engineered Behavioral Signal F89",
+        "is_bank_finalized": false,
+        "importance": 0.0046
+      },
+      {
+        "feature_id": "F3891",
+        "variable_name": "CUST_OCCP",
+        "description": "Occupation code of customer",
+        "is_bank_finalized": true,
+        "importance": 0.0045
+      },
+      {
+        "feature_id": "F8",
+        "variable_name": "Geo Changes",
+        "description": "Geographic IP/location variance during login/transactions",
+        "is_bank_finalized": false,
+        "importance": 0.0045
+      },
+      {
+        "feature_id": "F63",
+        "variable_name": "Engineered Behavioral Signal F63",
+        "description": "Engineered Behavioral Signal F63",
+        "is_bank_finalized": false,
+        "importance": 0.0044
+      },
+      {
+        "feature_id": "F77",
+        "variable_name": "Engineered Behavioral Signal F77",
+        "description": "Engineered Behavioral Signal F77",
+        "is_bank_finalized": false,
+        "importance": 0.0044
+      },
+      {
+        "feature_id": "F96",
+        "variable_name": "Engineered Behavioral Signal F96",
+        "description": "Engineered Behavioral Signal F96",
+        "is_bank_finalized": false,
+        "importance": 0.0044
+      },
+      {
+        "feature_id": "F43",
+        "variable_name": "Engineered Behavioral Signal F43",
+        "description": "Engineered Behavioral Signal F43",
+        "is_bank_finalized": false,
+        "importance": 0.0041
+      },
+      {
+        "feature_id": "F65",
+        "variable_name": "Engineered Behavioral Signal F65",
+        "description": "Engineered Behavioral Signal F65",
+        "is_bank_finalized": false,
+        "importance": 0.0039
+      },
+      {
+        "feature_id": "F83",
+        "variable_name": "Engineered Behavioral Signal F83",
+        "description": "Engineered Behavioral Signal F83",
+        "is_bank_finalized": false,
+        "importance": 0.0039
+      },
+      {
+        "feature_id": "F70",
+        "variable_name": "Engineered Behavioral Signal F70",
+        "description": "Engineered Behavioral Signal F70",
+        "is_bank_finalized": false,
+        "importance": 0.0038
+      },
+      {
+        "feature_id": "F18",
+        "variable_name": "API Gateway Transfer Frequency",
+        "description": "Automated API transfer requests",
+        "is_bank_finalized": false,
+        "importance": 0.0037
+      },
+      {
+        "feature_id": "F40",
+        "variable_name": "Engineered Behavioral Signal F40",
+        "description": "Engineered Behavioral Signal F40",
+        "is_bank_finalized": false,
+        "importance": 0.0037
+      },
+      {
+        "feature_id": "F98",
+        "variable_name": "Engineered Behavioral Signal F98",
+        "description": "Engineered Behavioral Signal F98",
+        "is_bank_finalized": false,
+        "importance": 0.0037
+      },
+      {
+        "feature_id": "F6",
+        "variable_name": "Night Transaction Ratio",
+        "description": "Percentage of transactions initiated between 12 AM - 5 AM",
+        "is_bank_finalized": false,
+        "importance": 0.0035
+      },
+      {
+        "feature_id": "F1",
+        "variable_name": "Transaction Velocity",
+        "description": "Rapid acceleration in transaction frequency (14D)",
+        "is_bank_finalized": false,
+        "importance": 0.0033
+      },
+      {
+        "feature_id": "F66",
+        "variable_name": "Engineered Behavioral Signal F66",
+        "description": "Engineered Behavioral Signal F66",
+        "is_bank_finalized": false,
+        "importance": 0.0032
+      },
+      {
+        "feature_id": "F4",
+        "variable_name": "Unique Receivers",
+        "description": "Number of distinct outgoing money beneficiaries (7D)",
+        "is_bank_finalized": false,
+        "importance": 0.0028
+      },
+      {
+        "feature_id": "F531",
+        "variable_name": "RA_CI_NON_CASH_CHQ_AMT_DB_L7_31D",
+        "description": "Ratio of avgs: of Customer Induced Non Cash Non Cheque Debit Amount - last 7 to 31D",
+        "is_bank_finalized": true,
+        "importance": 0.0
+      },
+      {
+        "feature_id": "F95",
+        "variable_name": "Engineered Behavioral Signal F95",
+        "description": "Engineered Behavioral Signal F95",
+        "is_bank_finalized": false,
+        "importance": 0.0
+      }
+    ]
+  }
+}
