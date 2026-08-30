@@ -6,11 +6,14 @@ Tagline: PREVENT. DETECT. RESPOND.
 
 from fastapi import FastAPI, File, UploadFile, HTTPException, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Dict, Any, List, Optional
 import logging
 import pandas as pd
 from datetime import datetime
+import os
 
 from app.services.bank_features import BANK_FINALIZED_FEATURES, TARGET_VARIABLE, get_feature_info
 from app.services.dataset_service import (
@@ -70,10 +73,6 @@ class ReportRequest(BaseModel):
     mode: Optional[str] = "full_feature"
 
 # --- Endpoints ---
-
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
-import os
 
 @app.get("/api/health")
 def root():
